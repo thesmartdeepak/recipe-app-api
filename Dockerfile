@@ -14,8 +14,11 @@ EXPOSE 8000
 
 ARG DEV=false
 
+RUN apk add --upgrade --no-cache postgresql-client
+RUN apk add --upgrade --no-cache --virtual .tmp-build-deps build-base postgresql-dev musl-dev
 RUN pip install --upgrade pip
 RUN pip install -r /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.dev.txt
+RUN apk del .tmp-build-deps
 
 ENV PATH="/py/bin:$PATH"
