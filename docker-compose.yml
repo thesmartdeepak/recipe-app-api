@@ -43,3 +43,7 @@ services:
             - "81:80"
         volumes:
             - dev-db-data:/var/lib/postgresql/data
+
+volumes:
+    dev-db-data:
+    ./app:
